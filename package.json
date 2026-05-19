@@ -1,0 +1,11 @@
+{
+  "name": "compressjpg-pro",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate:seo": "node scripts/generate-seo.mjs",
+    "generate:pages": "node scripts/generate-pages.mjs",
+    "build": "node scripts/generate-pages.mjs && node scripts/generate-seo.mjs"
+  }
+}

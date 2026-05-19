@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#f3f4f6"/>
+  <rect x="80" y="80" width="1040" height="470" rx="32" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
+  <rect x="140" y="160" width="120" height="120" rx="28" fill="#6ab04c" fill-opacity="0.12"/>
+  <path d="M170 230l28-36 22 28 38-52 72 60" stroke="#6ab04c" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="300" y="210" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="700" fill="#111827">Compress Images Online</text>
+  <text x="300" y="280" font-family="Inter, Arial, sans-serif" font-size="28" fill="#4b5563">Free JPG, PNG &amp; WebP · 100% local in browser</text>
+  <text x="300" y="360" font-family="Inter, Arial, sans-serif" font-size="24" fill="#6ab04c" font-weight="600">compressjpg.pro</text>
+  <rect x="300" y="400" width="90" height="44" rx="22" fill="#f3f4f6" stroke="#e5e7eb"/>
+  <text x="345" y="430" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600" fill="#4b5563">JPG</text>
+  <rect x="410" y="400" width="90" height="44" rx="22" fill="#f3f4f6" stroke="#e5e7eb"/>
+  <text x="455" y="430" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600" fill="#4b5563">PNG</text>
+  <rect x="520" y="400" width="100" height="44" rx="22" fill="#f3f4f6" stroke="#e5e7eb"/>
+  <text x="570" y="430" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600" fill="#4b5563">WebP</text>
+</svg>
