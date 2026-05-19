@@ -6,5 +6,8 @@ import { mountSiteChrome } from "./ui/site-chrome.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   mountSiteChrome();
-  new AppController();
+  // Only init compressor on tool pages (not About/Privacy/etc.)
+  if (document.getElementById("dropzone")) {
+    new AppController();
+  }
 });

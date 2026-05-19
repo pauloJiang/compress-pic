@@ -12,3 +12,11 @@ export const RELATED_TOOLS = [
   { label: "Compress WebP", href: "/compress-webp/" },
   { label: "JPG to 200KB", href: "/jpg-to-200kb/" },
 ];
+
+/** Footer legal / info links. */
+export const FOOTER_LINKS = [
+  { label: "About", href: "/about/" },
+  { label: "Privacy", href: "/privacy/" },
+  { label: "Terms", href: "/terms/" },
+  { label: "Contact", href: "/contact/" },
+];

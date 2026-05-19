@@ -1,8 +1,7 @@
-import { NAV_LINKS, RELATED_TOOLS } from "../config/nav.js";
+import { NAV_LINKS, RELATED_TOOLS, FOOTER_LINKS } from "../config/nav.js";
 
 /**
- * Mount sticky header nav and Related Tools footer block.
- * Set <body data-active-nav="compress-jpg"> on each page for active state.
+ * Mount sticky header nav, Related Tools, and footer legal links.
  */
 export function mountSiteChrome() {
   const headerHost = document.getElementById("site-header");
@@ -11,10 +10,16 @@ export function mountSiteChrome() {
     headerHost.outerHTML = renderHeader(active);
   }
 
+  const currentPath = normalizePath(window.location.pathname);
+
   const relatedHost = document.getElementById("site-related");
   if (relatedHost) {
-    const currentPath = normalizePath(window.location.pathname);
     relatedHost.innerHTML = renderRelatedTools(currentPath);
+  }
+
+  const footerHost = document.getElementById("site-footer-links");
+  if (footerHost) {
+    footerHost.innerHTML = renderFooterLinks(currentPath);
   }
 }
 
@@ -44,8 +49,20 @@ function renderRelatedTools(currentPath) {
     .map((tool) => `<a href="${tool.href}" class="related-tool-link">${tool.label}</a>`)
     .join("");
 
+  if (!links) return "";
+
   return `<section class="related-tools" aria-labelledby="related-tools-heading">
   <h2 id="related-tools-heading" class="related-tools-heading">Related Tools</h2>
   <div class="related-tools-grid">${links}</div>
 </section>`;
+}
+
+function renderFooterLinks(currentPath) {
+  return FOOTER_LINKS.map((link) => {
+    const isCurrent = normalizePath(link.href) === currentPath;
+    if (isCurrent) {
+      return `<span class="footer-legal-link is-current">${link.label}</span>`;
+    }
+    return `<a href="${link.href}" class="footer-legal-link">${link.label}</a>`;
+  }).join("");
 }

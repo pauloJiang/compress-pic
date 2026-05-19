@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "description": "Free browser-based image compression for JPG, PNG, and WebP",
   "scripts": {
-    "generate:seo": "node scripts/generate-seo.mjs",
     "generate:pages": "node scripts/generate-pages.mjs",
-    "build": "node scripts/generate-pages.mjs && node scripts/generate-seo.mjs"
+    "generate:legal": "node scripts/generate-legal.mjs",
+    "generate:seo": "node scripts/generate-seo.mjs",
+    "build": "node scripts/generate-pages.mjs && node scripts/generate-legal.mjs && node scripts/generate-seo.mjs"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
