@@ -117,6 +117,9 @@ body {
   gap: 0.125rem;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  flex: 1;
+  min-width: 0;
+  justify-content: center;
   scrollbar-width: none;
 }
 
@@ -147,6 +150,49 @@ body {
   color: var(--text);
   background: var(--bg);
   font-weight: 600;
+}
+
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 0.125rem;
+  padding: 0.2rem 0.35rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.lang-btn {
+  font-family: inherit;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  padding: 0.35rem 0.5rem;
+  cursor: pointer;
+  transition: color var(--transition), background var(--transition);
+  white-space: nowrap;
+}
+
+.lang-btn:hover {
+  color: var(--text);
+}
+
+.lang-btn.is-active {
+  color: var(--text);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.lang-sep {
+  color: var(--border);
+  font-size: 0.625rem;
+  user-select: none;
+  padding: 0 0.05rem;
 }
 
 body.has-site-header .hero-fold {
@@ -1408,6 +1454,11 @@ select:focus {
   .site-nav-link {
     padding: 0.4rem 0.6rem;
     font-size: 0.75rem;
+  }
+
+  .lang-btn {
+    font-size: 0.625rem;
+    padding: 0.3rem 0.4rem;
   }
 
   .app {

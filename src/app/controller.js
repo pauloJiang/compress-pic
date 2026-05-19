@@ -116,4 +116,12 @@ export class AppController {
     const enabled = !this.store.isProcessing() && this.store.size > 0;
     this.controls.setCompressAllEnabled(enabled);
   }
+
+  /** Re-render cards and control labels after language change. */
+  refreshLocale() {
+    for (const id of this.store.ids()) {
+      const item = this.store.get(id);
+      if (item) this.fileList.render(item);
+    }
+  }
 }

@@ -1,5 +1,6 @@
 import { formatBytes, calcSavedPercent } from "../../utils/format.js";
 import { escapeHtml } from "../../utils/html.js";
+import { t } from "../../i18n/index.js";
 
 /** @typedef {import("../../store/file-store.js").FileItem} FileItem */
 
@@ -14,9 +15,9 @@ const ARROW_ICON =
 /** Build saved-percent pill markup. */
 function savedPillHtml(saved) {
   if (saved === null) return "";
-  if (saved > 0) return `<span class="saved-pill">Saved ${saved}%</span>`;
-  if (saved === 0) return `<span class="saved-pill saved-pill--neutral">Saved 0%</span>`;
-  return `<span class="saved-pill saved-pill--warn">+${Math.abs(saved)}%</span>`;
+  if (saved > 0) return `<span class="saved-pill">${t("result.savedPct", { n: saved })}</span>`;
+  if (saved === 0) return `<span class="saved-pill saved-pill--neutral">${t("result.savedZero")}</span>`;
+  return `<span class="saved-pill saved-pill--warn">${t("result.savedWarn", { n: Math.abs(saved) })}</span>`;
 }
 
 /** HTML for a completed compression result card. */
@@ -45,13 +46,13 @@ export function renderDoneCard(item) {
     note,
     `<${D} class="compare-row">`,
     "<figure class=\"compare-pane compare-before\">",
-    "<span class=\"compare-tag\">Before</span>",
+    `<span class="compare-tag">${t("result.before")}</span>`,
     `<${D} class="compare-img-wrap"><img src="${item.previewUrl}" alt="Before preview" loading="lazy"></${D}>`,
     `<span class="compare-size">${beforeLabel}</span>`,
     "</figure>",
     `<span class="compare-arrow" aria-hidden="true">${ARROW_ICON}</span>`,
     "<figure class=\"compare-pane compare-after\">",
-    "<span class=\"compare-tag compare-tag--accent\">After</span>",
+    `<span class="compare-tag compare-tag--accent">${t("result.after")}</span>`,
     `<${D} class="compare-img-wrap"><img src="${item.compressedUrl || item.previewUrl}" alt="After preview" loading="lazy"></${D}>`,
     `<span class="compare-size compare-size--accent">${afterLabel}</span>`,
     "</figure>",
@@ -67,14 +68,14 @@ export function renderDoneCard(item) {
     `</${D}>`,
     "<footer class=\"result-footer\">",
     `<${D} class="result-stats-inline">`,
-    `<span><em>Original</em> ${beforeLabel}</span>`,
-    `<span><em>Compressed</em> ${afterLabel}</span>`,
-    saved !== null ? `<span class="result-stats-saved"><em>Saved</em> ${saved}%</span>` : "",
+    `<span><em>${t("result.original")}</em> ${beforeLabel}</span>`,
+    `<span><em>${t("result.compressed")}</em> ${afterLabel}</span>`,
+    saved !== null ? `<span class="result-stats-saved"><em>${t("result.saved")}</em> ${saved}%</span>` : "",
     `</${D}>`,
     `<${D} class="result-actions">`,
-    `<button type="button" class="btn btn-ghost btn-compress" ${disabled}>Re-compress</button>`,
-    `<button type="button" class="btn btn-primary btn-download">${DOWNLOAD_ICON}Download</button>`,
-    "<button type=\"button\" class=\"btn btn-ghost btn-remove\">Remove</button>",
+    `<button type="button" class="btn btn-ghost btn-compress" ${disabled}>${t("result.recompress")}</button>`,
+    `<button type="button" class="btn btn-primary btn-download">${DOWNLOAD_ICON}${t("result.download")}</button>`,
+    `<button type="button" class="btn btn-ghost btn-remove">${t("result.remove")}</button>`,
     `</${D}>`,
     "</footer>",
     "</article>",
@@ -86,14 +87,14 @@ export function renderPendingCard(item) {
   const beforeLabel = formatBytes(item.file.size);
   const name = escapeHtml(item.file.name);
   const disabled = item.status === "processing" ? "disabled" : "";
-  const compressLabel = item.status === "done" ? "Re-compress" : "Compress";
+  const compressLabel = item.status === "done" ? t("result.recompress") : t("result.compress");
 
   const statusHint =
     item.status === "processing"
-      ? "Compressing…"
+      ? t("result.compressing")
       : item.status === "error"
-        ? item.error || "Compression failed"
-        : "Ready to compress";
+        ? item.error || t("result.failed")
+        : t("result.ready");
   const metaClass =
     item.status === "error" ? "pending-meta pending-meta--error" : "pending-meta";
   const processingOverlay =
@@ -115,7 +116,7 @@ export function renderPendingCard(item) {
     `<p class="${metaClass}">${escapeHtml(statusHint)} · ${beforeLabel}</p>`,
     `<${D} class="pending-actions">`,
     `<button type="button" class="btn btn-primary btn-compress" ${disabled}>${compressLabel}</button>`,
-    "<button type=\"button\" class=\"btn btn-ghost btn-remove\">Remove</button>",
+    `<button type="button" class="btn btn-ghost btn-remove">${t("result.remove")}</button>`,
     `</${D}>`,
     `</${D}>`,
     `</${D}>`,

@@ -188,7 +188,7 @@ export function renderPage(page) {
   <link rel="stylesheet" href="${css}">
   <script type="application/ld+json">${renderJsonLd(page)}</script>
 </head>
-<body class="has-site-header" data-active-nav="${page.activeNav}">
+<body class="has-site-header" data-page-id="${page.id}" data-active-nav="${page.activeNav}">
   <div id="site-header" class="site-header-host"></div>
   <main class="app">
     <div class="container">

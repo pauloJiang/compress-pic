@@ -3,11 +3,22 @@
  */
 import { AppController } from "./app/controller.js";
 import { mountSiteChrome } from "./ui/site-chrome.js";
+import { initI18n, applyPageTranslations } from "./i18n/index.js";
+
+/** @type {AppController | null} */
+let app = null;
 
 document.addEventListener("DOMContentLoaded", () => {
+  initI18n();
   mountSiteChrome();
-  // Only init compressor on tool pages (not About/Privacy/etc.)
+
   if (document.getElementById("dropzone")) {
-    new AppController();
+    app = new AppController();
   }
+});
+
+document.addEventListener("localechange", () => {
+  applyPageTranslations();
+  mountSiteChrome();
+  app?.refreshLocale();
 });

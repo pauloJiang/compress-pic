@@ -21,7 +21,7 @@ export function renderLegalPage(page) {
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="${css}">
 </head>
-<body class="has-site-header legal-page">
+<body class="has-site-header legal-page" data-page-id="${page.id}">
   <div id="site-header" class="site-header-host"></div>
   <main class="app legal-app">
     <div class="container">
